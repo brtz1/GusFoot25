@@ -1,4 +1,3 @@
-// Data model for a match fixture between two teams
 public class Match {
     public Team HomeTeam;
     public Team AwayTeam;
@@ -9,8 +8,7 @@ public class Match {
     public Match(Team home, Team away) {
         HomeTeam = home;
         AwayTeam = away;
-        HomeScore = 0;
-        AwayScore = 0;
+        HomeScore = AwayScore = 0;
         HasBeenPlayed = false;
     }
 }

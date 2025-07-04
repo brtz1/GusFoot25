@@ -4,30 +4,23 @@ public class Team {
     public string TeamName;
     public List<Player> Players;
     public int Budget;
-    public League League;      // reference to the league this team is in (if any)
-    // Season performance stats:
-    public int Points;
-    public int Wins;
-    public int Draws;
-    public int Losses;
-    public int GoalsFor;
-    public int GoalsAgainst;
-    public int Morale;        // 0-100 morale affecting performance (50 = neutral)
+    public League League;      // reference to its league (null for district teams)
+
+    // Season stats
+    public int Points, Wins, Draws, Losses, GoalsFor, GoalsAgainst;
+    public int Morale;         // 0–100, starts at 50
 
     public Team(string name, int startingBudget) {
         TeamName = name;
         Budget = startingBudget;
         Players = new List<Player>();
         Points = Wins = Draws = Losses = GoalsFor = GoalsAgainst = 0;
-        Morale = 50;  // start with neutral morale
+        Morale = 50;
     }
 
-    // Calculate team strength (e.g., sum of all player ratings)
     public int GetTeamStrength() {
-        int totalRating = 0;
-        foreach (Player p in Players) {
-            totalRating += p.OverallRating;
-        }
-        return totalRating;
+        int total = 0;
+        foreach (var p in Players) total += p.OverallRating;
+        return total;
     }
 }
